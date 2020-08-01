@@ -2,10 +2,12 @@ const express = require('express')
 const fs = require('fs')
 const sqlite3 = require('sqlite3').verbose();
 const db = new sqlite3.Database('./usersdb.sqlite3');
+const cors = require('cors')
 const app = express()
 
 const PORT = process.env.PORT || 4000
 
+app.use(cors())
 app.use('/api', require('./api'))
 
 function start() {

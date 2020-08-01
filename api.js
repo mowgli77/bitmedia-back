@@ -4,6 +4,7 @@ const db = new sqlite3.Database('./usersdb.sqlite3');
 const router = express.Router()
 
 router.get('/users/:count/:page', (req, res) => {
+    console.log(req)
     db.all(`SELECT * from users LIMIT ${req.params.count} OFFSET ${req.params.page*req.params.count}`, (err, results) => {
         res.send(results)
     })
